@@ -308,10 +308,10 @@ public extension Swifter {
         parameters["id"] = id
 
         if device != nil {
-            parameters["device"] = device!
+            parameters["device"] = device!.description
         }
         if retweets != nil {
-            parameters["retweets"] = retweets!
+            parameters["retweets"] = retweets!.description
         }
 
         self.postJSONWithPath(path, baseURL: self.apiURL, parameters: parameters, uploadProgress: nil, downloadProgress: nil, success: {
@@ -330,10 +330,10 @@ public extension Swifter {
         parameters["screen_name"] = screenName
 
         if device != nil {
-            parameters["device"] = device!
+            parameters["device"] = device!.description
         }
         if retweets != nil {
-            parameters["retweets"] = retweets!
+            parameters["retweets"] = retweets!.description
         }
 
         self.postJSONWithPath(path, baseURL: self.apiURL, parameters: parameters, uploadProgress: nil, downloadProgress: nil, success: {
