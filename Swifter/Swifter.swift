@@ -129,9 +129,12 @@ public class Swifter {
                         }
                         if let chunkData = chunk.dataUsingEncoding(NSUTF8StringEncoding) {
                             do {
-                                let jsonResult = try JSON.parseJSONData(chunkData)
-                                downloadProgress?(json: jsonResult, response: response)
+                                let object = try NSJSONSerialization.JSONObjectWithData(chunkData, options: .MutableContainers)
+                                let json = JSON(object)
+                                buffer.setData(NSData())
+                                downloadProgress?(json: json, response: response)
                             } catch _ as NSError {
+                                buffer.setData(chunkData)
                             } catch {
                                 fatalError()
                             }
